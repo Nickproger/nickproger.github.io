@@ -1,0 +1,12 @@
+[
+{"id":1,"name":"Apple","category_id":1,"image":"http://images.smh.com.au/2012/06/25/3403612/apple_main-420x0.jpg"},
+{"id":2,"name":"Orange","category_id":1,"image":"http://realfood.tesco.com/media/images/Orange-and-almond-srping-cake-hero-58d07750-0952-47eb-bc41-a1ef9b81c01a-0-472x310.jpg"},
+{"id":3,"name":"Banana","category_id":1,"image":"http://baby-recipes.com/wp-content/uploads/2014/02/banana.jpg"},
+{"id":4,"name":"BMW","category_id":2,"image":"http://blog.logomyway.com/wp-content/uploads/2013/05/bmw-logo.jpg"},
+{"id":5,"name":"Tesla","category_id":2,"image":"http://www.bankoboev.ru/images/MTc1NDIw/Bankoboev.Ru_logotip_tesla.jpg"},
+{"id":6,"name":"Google","category_id":3,"image":"http://img.hifipublic.com/wp-content/uploads/2014/05/google-logo.jpg"},
+{"id":7,"name":"Samsung","category_id":3,"image":"http://www.kiddskids.com/wp-content/uploads/2012/05/samsung-logo.jpeg"},
+{"id":8,"name":"Apple","category_id":3,"image":"http://info-city.com.ua/wp-content/uploads/2012/11/Apple.png"},
+{"id":9,"name":"Amazon","category_id":3,"image":"http://helpline-numbers.co.uk/wp-content/uploads/2014/04/amazon-customer-service-contact-phone-number-300x109.jpg"},
+{"id":10,"name":"LG","category_id":3,"image":"http://www.master-stiralnyh-mashin.com.ua/wp-content/uploads/2013/04/LG.png"}
+]

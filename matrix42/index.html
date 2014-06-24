@@ -1,68 +1,91 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Bootstrap 101 Template</title>
+<html ng-app="Market">
+<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>Market</title>
+		<link href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet" />
+		<link href="css/styles.css" rel="stylesheet" />
+		<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+		<!--[if lt IE 9]>
+			<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+			<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+		<![endif]-->
+</head>
+<body ng-controller="MarketCtrl">
 
-    <!-- Bootstrap -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+	<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="/matrix42/index.html">Logo</a>
+			</div>
+			<div class="collapse navbar-collapse">
+				<form class="navbar-form navbar-right">
+					<input type="text" class="form-control" ng-model="textFilter" placeholder="Search...">
+				</form>
+			</div><!--/.nav-collapse -->
+		</div>
+	</div>
 
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
-  </head>
-  <body>
-
-
-
-
-
-    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="#">Project name</a>
-        </div>
-        <div class="collapse navbar-collapse">
-          <ul class="nav navbar-nav">
-            <li class="active"><a href="#">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#contact">Contact</a></li>
-          </ul>
-        </div><!--/.nav-collapse -->
-      </div>
-    </div>
-
-    <div class="container">
-
-      <div class="starter-template">
-        <h1>Bootstrap starter template</h1>
-        <p class="lead">Use this document as a way to quickly start any new project.<br> All you get is this text and a mostly barebones HTML document.</p>
-      </div>
-
-    </div><!-- /.container -->
-
-
-
-
-
-
-
-
-
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="js/bootstrap.min.js"></script>
-  </body>
+	<div class="container">
+		<!-- Example row of columns -->
+		<div class="row">
+			<div class="col-md-3">
+				<ul id="categories" class="nav nav-pills nav-stacked">
+					<li  ng-class="{active: currentCategory===0}"><a href="" ng-click="setCurrentCategory(0)">All categories</a></li>
+					<li ng-repeat="category in categories" ng-class="{active: category.id===currentCategory}">
+						<a href="" ng-click="setCurrentCategory(category.id)">{{category.name}}</a>
+					</li>
+				</ul>
+				<hr />
+			</div>
+			<div id="products" class="col-md-7">
+				<div class="row">
+					<div
+						class="col-sm-6 col-md-4"
+						ng-repeat="product in filteredProducts = ( products | filter:filterByCategory | filter: {name: textFilter})"
+					>
+						<div class="thumbnail text-center">
+							<div class="caption">
+								<h4>{{product.name}}</h4>
+								<button ng-click="addToCard(product)" ng-hide="isInCard(product)" class="btn btn-primary btn-xs">
+									<span class="glyphicon glyphicon-plus"></span> Add to card
+								</button>
+								<button ng-show="isInCard(product)" class="btn btn-xs btn-disabled">in a card</button>
+							</div>
+							<img alt="{{product.name}}" src="{{product.image}}">
+						</div>
+					</div>
+					<span class="text-muted" ng-hide="filteredProducts.length">No products</span>
+				</div>
+			</div>
+			<div id="card" class="col-md-2">
+				<h4>My Card</h4>
+				<ul class="list-group">
+					<li ng-repeat="product in card" class="list-group-item">
+						<button ng-click="removeFromCard($index)" class="btn btn-link btn-xs"><span class="glyphicon glyphicon-trash"></span></button>
+						<img src="{{product.image}}" alt="" />&nbsp;
+						{{product.name}}
+					</li>
+				</ul>
+				<span class="text-muted" ng-hide="card.length">Card is empty</span>
+			</div>
+		</div>
+	</div><!-- /.container -->
+	
+	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+	<!-- Include all compiled plugins (below), or include individual files as needed -->
+	<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0-beta.13/angular.js"></script>
+	<script src="js/scripts.js"></script>
+</body>
 </html>

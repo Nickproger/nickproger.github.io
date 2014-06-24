@@ -1,0 +1,20 @@
+body {
+	padding-top: 70px;
+}
+
+#categories, #products, #card {
+	margin-bottom: 20px;
+}
+
+#products .thumbnail {
+	height: 240px;
+}
+
+#products img {
+	max-height: 140px;
+}
+
+#card img {
+	max-width: 30px;
+	max-height: 30px;
+}
