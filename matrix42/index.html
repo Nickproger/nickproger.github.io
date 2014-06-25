@@ -61,7 +61,7 @@
 								</button>
 								<button ng-show="isInCard(product)" class="btn btn-xs btn-disabled">in a card</button>
 							</div>
-							<img alt="{{product.name}}" src="{{product.image}}">
+							<img alt="{{product.name}}" ng-src="{{product.image}}">
 						</div>
 					</div>
 					<span class="text-muted" ng-hide="filteredProducts.length">No products</span>
@@ -72,7 +72,7 @@
 				<ul class="list-group">
 					<li ng-repeat="product in card" class="list-group-item animate-repeat">
 						<button ng-click="removeFromCard($index)" class="btn btn-link btn-xs"><span class="glyphicon glyphicon-trash"></span></button>
-						<img src="{{product.image}}" alt="" />&nbsp;
+						<img ng-src="{{product.image}}" alt="" />&nbsp;
 						{{product.name}}
 					</li>
 				</ul>
@@ -85,8 +85,8 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 	<!-- Include all compiled plugins (below), or include individual files as needed -->
 	<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
-	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0-beta.13/angular.js"></script>
-	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0-beta.13/angular-animate.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0-beta.13/angular.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0-beta.13/angular-animate.min.js"></script>
 	<script src="js/scripts.js"></script>
 </body>
 </html>
