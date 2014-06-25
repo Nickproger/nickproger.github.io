@@ -1,4 +1,4 @@
-var Market = angular.module("Market", []);
+var Market = angular.module("Market", ['ngAnimate']);
 
 
 Market.factory("dataFactory", function ($http) {
